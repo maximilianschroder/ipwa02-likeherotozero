@@ -14,11 +14,11 @@ public class PublicController {
         this.emissionService = emissionService;
     }
 
-    @GetMapping("/") // Wenn jemand die Startseite aufruft...
+    @GetMapping("/") // Wenn jemand die Startseite aufruft
     public String showStartPage(Model model) {
-        // ... holen wir die Daten ...
+        // holen wir die Daten
         model.addAttribute("emissions", emissionService.getAllEmissions());
-        // ... und geben "index" zurück (Spring sucht dann nach index.html)
+        // und geben "index" zurück (Spring sucht dann nach index.html)
         return "index";
     }
 }

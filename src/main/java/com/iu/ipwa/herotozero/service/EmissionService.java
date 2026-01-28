@@ -19,17 +19,14 @@ public class EmissionService {
         return repository.findAll();
     }
 
-    // NEU: Speichern
     public void save(EmissionData emissionData) {
         repository.save(emissionData);
     }
 
-    // NEU: Suchen nach ID (fürs Bearbeiten)
     public EmissionData findById(long id) {
         return repository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid ID:" + id));
     }
 
-    // NEU: Löschen
     public void delete(long id) {
         repository.deleteById(id);
     }

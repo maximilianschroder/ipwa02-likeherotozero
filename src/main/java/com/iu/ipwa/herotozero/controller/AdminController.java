@@ -20,13 +20,12 @@ public class AdminController {
     @GetMapping("/dashboard")
     public String showDashboard(Model model) {
         model.addAttribute("emissions", emissionService.getAllEmissions());
-        return "admin/dashboard"; // Wir legen das gleich in einen Unterordner
+        return "admin/dashboard";
     }
 
     // 2. Formular zum "Neu anlegen" zeigen
     @GetMapping("/add")
     public String showAddForm(Model model) {
-        // Wir übergeben ein leeres Objekt an das Formular
         model.addAttribute("emissionData", new EmissionData());
         return "admin/emission-form";
     }
@@ -34,7 +33,7 @@ public class AdminController {
     // 3. Formular zum "Bearbeiten" zeigen (lädt vorhandene Daten)
     @GetMapping("/edit/{id}")
     public String showUpdateForm(@PathVariable("id") long id, Model model) {
-        EmissionData data = emissionService.findById(id); // Diese Methode müssen wir im Service noch bauen!
+        EmissionData data = emissionService.findById(id);
         model.addAttribute("emissionData", data);
         return "admin/emission-form";
     }
@@ -42,14 +41,14 @@ public class AdminController {
     // 4. Speichern (wird vom Formular aufgerufen)
     @PostMapping("/save")
     public String saveEmission(@ModelAttribute("emissionData") EmissionData emissionData) {
-        emissionService.save(emissionData); // Diese Methode müssen wir im Service noch bauen!
+        emissionService.save(emissionData);
         return "redirect:/admin/dashboard"; // Nach dem Speichern zurück zur Übersicht
     }
 
     // 5. Löschen
     @GetMapping("/delete/{id}")
     public String deleteEmission(@PathVariable("id") long id) {
-        emissionService.delete(id); // Diese Methode müssen wir im Service noch bauen!
+        emissionService.delete(id);
         return "redirect:/admin/dashboard";
     }
 }

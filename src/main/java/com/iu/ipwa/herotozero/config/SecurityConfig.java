@@ -30,8 +30,6 @@ public class SecurityConfig {
                         .permitAll()
                 );
 
-        // KORRIGIERTE VARIANTE: Wir nutzen Strings statt AntPathRequestMatcher
-        // Das erlaubt der H2-Console, trotz Sicherheitsregeln zu funktionieren
         http.csrf(csrf -> csrf.ignoringRequestMatchers("/h2-console/**"));
         http.headers(headers -> headers.frameOptions(frameOptions -> frameOptions.disable()));
 
@@ -40,7 +38,7 @@ public class SecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        // Wir erstellen einen festen Nutzer für die Wissenschaftler
+        // fester Nutzer für die Wissenschaftler
         UserDetails user = User.withDefaultPasswordEncoder()
                 .username("science")
                 .password("password")

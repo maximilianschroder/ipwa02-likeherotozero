@@ -5,19 +5,17 @@ import com.iu.ipwa.herotozero.repository.EmissionDataRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-@Component // Sagt Spring: "Lade mich beim Start"
+@Component
 public class DataInitializer implements CommandLineRunner {
 
     private final EmissionDataRepository repository;
 
-    // Konstruktor-Injektion (Best Practice statt @Autowired)
     public DataInitializer(EmissionDataRepository repository) {
         this.repository = repository;
     }
 
     @Override
     public void run(String... args) throws Exception {
-        // Wir prüfen, ob schon Daten da sind, um Dopplungen bei Neustart (auf echten DBs) zu vermeiden
         if (repository.count() == 0) {
             System.out.println("... Erstelle Dummy-Daten ...");
 

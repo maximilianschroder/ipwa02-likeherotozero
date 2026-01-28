@@ -9,5 +9,4 @@ public interface EmissionDataRepository extends JpaRepository<EmissionData, Long
     // Leer!
     // Durch "extends JpaRepository" haben wir automatisch Methoden wie:
     // .findAll(), .save(), .deleteById(), usw. geerbt.
-    // Das ist die Magie von Spring Data.
 }

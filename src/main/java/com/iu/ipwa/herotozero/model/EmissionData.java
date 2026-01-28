@@ -18,7 +18,6 @@ public class EmissionData {
     @Column(name = "emission_year")
     private Integer year;
 
-    // HIER WAR DER FEHLER:
-    @Column(name = "emission_value") // Wir erzwingen den Namen "emission_value" in der DB
+    @Column(name = "emission_value")
     private Double value;
 }
